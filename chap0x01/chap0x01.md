@@ -37,7 +37,7 @@
 
 - Ubuntu:![ubuntukernel](./img/kernel.png)
 - Debian:![debiankernel](./img/debian_kernel.png)
-- OpenWrt:OpenWrt未安装`hostnamectl`,因此改用`uname -srm`:![openwrtkernel](./img/openwrt_kernel.png)
+- OpenWrt:OpenWrt未安装`hostnamectl`,因此改用`uname -srm`:![openwrtkernel](./img/Openwrt_kernel.png)
 
 
 
