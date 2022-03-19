@@ -4,7 +4,7 @@
 | -------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | 安装 `tmux` 和 `tshark`                | [![asciicast](https://asciinema.org/a/JdtOpZL2GGr4YMAoT0ohL4kHT.svg)](https://asciinema.org/a/JdtOpZL2GGr4YMAoT0ohL4kHT) | [![asciicast](https://asciinema.org/a/kfQrnKn0Pp5Jkh3mvwA4KZxeJ.svg)](https://asciinema.org/a/kfQrnKn0Pp5Jkh3mvwA4KZxeJ) | ` sudo apt install tmux && sudo apt install tshark  `        |
 | 查看安装路径                           | [![asciicast](https://asciinema.org/a/kGGJzh7BxZcBCLTOvjFLzi6F0.svg)](https://asciinema.org/a/kGGJzh7BxZcBCLTOvjFLzi6F0) | [![asciicast](https://asciinema.org/a/E0CiPAomFoNGSwmDgqoRehUUn.svg)](https://asciinema.org/a/E0CiPAomFoNGSwmDgqoRehUUn) | `whereis tmux `                                              |
-| 卸载 `tshark` ，验证 `tshark` 卸载结果 | [![asciicast](https://asciinema.org/a/9eZCz9FS0m6z2W5JMzb8qfbfs.svg)](https://asciinema.org/a/9eZCz9FS0m6z2W5JMzb8qfbfs) | [![asciicast](https://asciinema.org/a/0EnHb2EwkouWMrOk1JcnszoO6.svg)](https://asciinema.org/a/0EnHb2EwkouWMrOk1JcnszoO6) | `apt --install | grep tshark`   `dpkg -L | grep tshark`                                                 `sudo apt remove tshark` |
+| 卸载 `tshark` ，验证 `tshark` 卸载结果 | [![asciicast](https://asciinema.org/a/9eZCz9FS0m6z2W5JMzb8qfbfs.svg)](https://asciinema.org/a/9eZCz9FS0m6z2W5JMzb8qfbfs) | [![asciicast](https://asciinema.org/a/0EnHb2EwkouWMrOk1JcnszoO6.svg)](https://asciinema.org/a/0EnHb2EwkouWMrOk1JcnszoO6) | <code>apt --install &#124 grep tshark</code>  <code> dpkg -L &#124 grep tshark</code>                                                  `sudo apt remove tshark` |
 
 
 
@@ -37,7 +37,7 @@
 
 |                                              | Debian9                                                      | Ubuntu20.04                                                  | 命令                                                         |
 | -------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 目标系统的 CPU、内存大小、硬盘数量与硬盘容量 | [![asciicast](https://asciinema.org/a/NzuVMCGOZ0kJaCcBkC01FhuLV.svg)](https://asciinema.org/a/NzuVMCGOZ0kJaCcBkC01FhuLV) | [![asciicast](https://asciinema.org/a/rF0z3UY5uHfI3S2oICFnwnXxM.svg)](https://asciinema.org/a/rF0z3UY5uHfI3S2oICFnwnXxM) | `cat /proc/cpuinfo | grep 'process' | sort | uniq | wc -l`                                                                                                         `cat /proc/meminfo`                                                                                                                                                                                                   `df -hl` |
+| 目标系统的 CPU、内存大小、硬盘数量与硬盘容量 | [![asciicast](https://asciinema.org/a/NzuVMCGOZ0kJaCcBkC01FhuLV.svg)](https://asciinema.org/a/NzuVMCGOZ0kJaCcBkC01FhuLV) | [![asciicast](https://asciinema.org/a/rF0z3UY5uHfI3S2oICFnwnXxM.svg)](https://asciinema.org/a/rF0z3UY5uHfI3S2oICFnwnXxM) | <code>cat /proc/cpuinfo &#124 grep 'process' &#124 sort &#124 uniq &#124 wc -l   </code>                                                                                                                                                                                                                                  `cat /proc/meminfo`                                                                                                                                                                                                   `df -hl` |
 
 
 
@@ -45,7 +45,7 @@
 
 ### 1.
 
-- 在第二个实验中，我的Ubuntu20.04下，使用asciinema录制，会在当前目录下生成一个后缀名为`.cast`的录制临时文件，在使用`sudo grep -r  "666"`会导致这个录制零食文件也参与到查找中来，影响了实验结果，如下：
+- 在第二个实验中，我的Ubuntu20.04下，使用asciinema录制，会在当前目录下生成一个后缀名为`.cast`的录制临时文件，在使用`sudo grep -r  "666"`会导致这个录制临时文件也参与到查找中来，影响了实验结果，如下：
 
 - [![asciicast](https://asciinema.org/a/fLZIgqEsKXz9X0nZpT3PcVsK9.svg)](https://asciinema.org/a/fLZIgqEsKXz9X0nZpT3PcVsK9)
 
