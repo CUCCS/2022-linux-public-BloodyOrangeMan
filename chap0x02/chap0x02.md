@@ -1,5 +1,7 @@
 # 1.实验准备
 
+- 实验环境：**Ubuntu 20.04.4 LTS (Focal Fossa)** ,**Debian 9 *Stretch***
+
 - 注册并关联asciinema账号：
 
   ![asciinema](./img/pre-work-asciinema.png)
@@ -7,6 +9,8 @@
 - 将解压实验中所需文件通过scp方式上传至vps：
 
   ![zip](./img/pre-work-zip.png)
+
+  
 
 
 
