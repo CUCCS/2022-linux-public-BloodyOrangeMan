@@ -49,6 +49,14 @@
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | 练习课件中 文件压缩与解压缩 一节所有提到的压缩与解压缩命令的使用方法 | [![asciicast](https://asciinema.org/a/EJKtFoqirCWwRhISZGmixkz8A.svg)](https://asciinema.org/a/EJKtFoqirCWwRhISZGmixkz8A) | [![asciicast](https://asciinema.org/a/C3m3qodg2j0kabSc10jleVD2n.svg)](https://asciinema.org/a/C3m3qodg2j0kabSc10jleVD2n) | `unzip -O cp936  test.zip   `                                      `unar test.zip  ` |
 
+| 后缀名      | 解压/解包                                           | 压缩/打包                          |
+| ----------- | --------------------------------------------------- | ---------------------------------- |
+| **.tar**    | `tar xvf FileName.tar`                              | `tar cvf FileName.tar DirName`     |
+| **.gz**     | `gunzip FileName.gz` `gzip -d FileName.gz`          | `gzip FileName`                    |
+| **.tar.gz** | `tar zxvf FileName.tar.gz`                          | `tar zcvf FileName.tar.gz DirName` |
+| **.zip**    | `unzip FileName.zip`                                | `zip FileName.zip DirName`         |
+| **.rpm**    | <code>rpm2cpio FileName.rpm &#124; cpio -div</code> | /                                  |
+
 
 
 # 5.子进程管理实验
