@@ -138,9 +138,7 @@
 
 | ssh配置文件                 | 解释                                                         |
 | --------------------------- | ------------------------------------------------------------ |
-| ![config](./img/config.png) | 红色区块为[Unit] 区块：启动顺序与依赖关系；<br/>绿色区块[Service] 区块：启动行为；<br/>黄色区块为[Install] 区块，定义如何安装这个配置文件。 |
-
-
+| ![config](./img/config.png) | 红色区块为[Unit] 区块：启动顺序与依赖关系；<br/>绿色区块为[Service] 区块：启动行为；<br/>黄色区块为[Install] 区块，定义如何安装这个配置文件。 |
 
 ### 3.4 动手写配置文件
 
@@ -159,4 +157,83 @@ WantedBy=multi-user.target
 | 演示                                                         | 命令                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | [![asciicast](https://asciinema.org/a/O7gtRsm1Ucw7xnje8lvfp85J2.svg)](https://asciinema.org/a/O7gtRsm1Ucw7xnje8lvfp85J2) | `vim /usr/lib/systemd/system/helloworld.service`<br/> `systemctl enable helloworld`<br/>   `systemctl start helloworld`  <br/>     `systemctl status helloworld` |
+
+------
+
+# 4 本章完成后的自查清单
+
+### 4.1 如何添加一个用户并使其具备sudo执行程序的权限？
+
+```bash
+#添加一个用户
+$ adduser jimmy
+
+#使其具备sudo执行程序的权限
+$ usermod -G sudo jimmy
+```
+
+### 4.2 如何将一个用户添加到一个用户组？
+
+```bash
+#将一个用户添加到一个用户组
+$ usermod -a -G lsj jimmy
+```
+
+### 4.3 如何查看当前系统的分区表和文件系统详细信息？
+
+```bash
+#查看当前系统的分区表
+$ fdisk -l
+
+#查看文件系统详细信息
+$ df -a
+
+#两者一起
+$ lsblk -f -p
+```
+
+### 4.4 如何实现开机自动挂载Virtualbox的共享目录分区？
+
+| 演示                                                         | 命令                                                         |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| ![set](./img/set_sharedir.png)                               | 在Virtualbox中设置共享文件夹，并安装完成增强功能             |
+| [![asciicast](https://asciinema.org/a/ZYsveBzvhMpXcN05DElfr5Z7o.svg)](https://asciinema.org/a/ZYsveBzvhMpXcN05DElfr5Z7o) | `sudo su` -<br/><br/>`mkdir /mnt/testshare`<br/><br/>`cd /mnt/testshare`<br/><br/>`mount -t vboxsf share-test /mnt/testshare`<br/><br/>`vim  /etc/fstab`<br/><br/>`share-test /mnt/testshare vboxsf rw,gid=100,uid=1000,auto 0 0` |
+| ![confirm](./img/confirm.png)                                | 重新启动后，通过`df -h`命令可以看到share文件夹自动挂载成功   |
+
+### 4.5 基于LVM（逻辑分卷管理）的分区如何实现动态扩容和缩减容量？
+
+```bash
+#扩容
+$ lvextend -L +<容量> <目录>   
+
+#减容
+$ lvreduce -L -<容量> <目录>    
+```
+
+### 4.6 如何通过systemd设置实现在网络连通时运行一个指定脚本，在网络断开时运行另一个脚本？
+
+```ini
+#在/lib/systemd/system/systemd-networkd.service的[Service]块中添加如下设置
+
+#网络连通时运行脚本1
+ExecStartPost = bash1
+
+#网络断开时运行脚本2
+ExecStopPost = bash2
+```
+
+### 4.7 如何通过systemd设置实现一个脚本在任何情况下被杀死之后会立即重新启动？实现杀不死？
+
+```ini
+#在[Service]块中添加如下设置
+Restart=always
+```
+
+------
+
+# 5 参考资料
+
+- [Mounting VirtualBox shared folders on Ubuntu Server 16.04 LTS](https://gist.github.com/estorgio/1d679f962e8209f8a9232f7593683265)
+- [Systemd 入门教程：命令篇 by 阮一峰的网络日志](http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-commands.html)
+- [Systemd 入门教程：实战篇 by 阮一峰的网络日志](http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-part-two.html)
 
