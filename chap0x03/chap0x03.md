@@ -126,19 +126,19 @@
 
 | 演示                                                         | 命令                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [![asciicast](https://asciinema.org/a/BUvsdWbrHiiihCYbvdcRf95BZ.svg)](https://asciinema.org/a/BUvsdWbrHiiihCYbvdcRf95BZ) | `sudo systemctl enable nginx`        `sudo systemctl start nginx`                    `sudo systemctl status nginx` |
+| [![asciicast](https://asciinema.org/a/BUvsdWbrHiiihCYbvdcRf95BZ.svg)](https://asciinema.org/a/BUvsdWbrHiiihCYbvdcRf95BZ) | `sudo systemctl enable nginx`<br/>`sudo systemctl start nginx`<br/>`sudo systemctl status nginx` |
 
 ### 3.2 停止服务
 
 | 演示                                                         | 命令                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [![asciicast](https://asciinema.org/a/YM8bo5ep6vnqxbtCQUJynKmHS.svg)](https://asciinema.org/a/YM8bo5ep6vnqxbtCQUJynKmHS) | `sudo systemctl status nginx`                                                   `sudo systemctl stop nginx`                                                                 `sudo systemctl kill nginx`                                                                 `sudo systemctl restart nginx` |
+| [![asciicast](https://asciinema.org/a/YM8bo5ep6vnqxbtCQUJynKmHS.svg)](https://asciinema.org/a/YM8bo5ep6vnqxbtCQUJynKmHS) | `sudo systemctl status nginx` <br/>  `sudo systemctl stop nginx`<br/>         `sudo systemctl kill nginx`   <br/>                                                              `sudo systemctl restart nginx` |
 
 ### 3.3 读懂配置文件
 
 | ssh配置文件                 | 解释                                                         |
 | --------------------------- | ------------------------------------------------------------ |
-| ![config](./img/config.png) | 红色区块为[Unit] 区块：启动顺序与依赖关系；绿色区块[Service] 区块：启动行为；黄色区块为[Install] 区块，定义如何安装这个配置文件 |
+| ![config](./img/config.png) | 红色区块为[Unit] 区块：启动顺序与依赖关系；<br/>绿色区块[Service] 区块：启动行为；<br/>黄色区块为[Install] 区块，定义如何安装这个配置文件。 |
 
 
 
@@ -158,5 +158,5 @@ WantedBy=multi-user.target
 
 | 演示                                                         | 命令                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [![asciicast](https://asciinema.org/a/O7gtRsm1Ucw7xnje8lvfp85J2.svg)](https://asciinema.org/a/O7gtRsm1Ucw7xnje8lvfp85J2) | `vim /usr/lib/systemd/system/helloworld.service`<br/>        `systemctl enable helloworld`                                      `systemctl start helloworld`                                              `systemctl status helloworld` |
+| [![asciicast](https://asciinema.org/a/O7gtRsm1Ucw7xnje8lvfp85J2.svg)](https://asciinema.org/a/O7gtRsm1Ucw7xnje8lvfp85J2) | `vim /usr/lib/systemd/system/helloworld.service`<br/> `systemctl enable helloworld`<br/>   `systemctl start helloworld`  <br/>     `systemctl status helloworld` |
 
