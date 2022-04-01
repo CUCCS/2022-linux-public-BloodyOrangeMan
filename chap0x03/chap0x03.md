@@ -231,9 +231,35 @@ Restart=always
 
 ------
 
-# 5 参考资料
+# 5 实验问题
+
+- 通过Virtualbox内置的安装增强功能按钮失败。
+
+- 报错如下：
+
+- > ```
+  > 未能加载虚拟光盘 C:\Program Files\Oracle\VirtualBox\VBoxGuestAdditions.iso 到虚拟电脑 ubuntu20.04.
+  > 
+  > Could not mount the media/drive 'C:\Program Files\Oracle\VirtualBox\VBoxGuestAdditions.iso' (VERR_PDM_MEDIA_LOCKED).
+  > 
+  > 返回 代码: E_FAIL (0x80004005)
+  > 组件: ConsoleWrap
+  > 界面: IConsole {872da645-4a9b-1727-bee2-5585105b9eed}
+  > 被召者: IMachine {85632c68-b5bb-4316-a900-5eb28d3413df}
+  > ```
+
+- 解决方法:
+
+  1. 找到VBoxGuestAdditions.iso文件
+  2. 通过scp传该入虚拟机
+  3. 在虚拟机内执行`sudo ./VBoxLinuxAdditions.run`
+
+------
+
+# 6 参考资料
 
 - [Mounting VirtualBox shared folders on Ubuntu Server 16.04 LTS](https://gist.github.com/estorgio/1d679f962e8209f8a9232f7593683265)
+- [Unable to mount the CD/DVD image on the machine Sandbox](https://askubuntu.com/questions/321589/unable-to-mount-the-cd-dvd-image-on-the-machine-sandbox)
 - [Systemd 入门教程：命令篇 by 阮一峰的网络日志](http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-commands.html)
 - [Systemd 入门教程：实战篇 by 阮一峰的网络日志](http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-part-two.html)
 
