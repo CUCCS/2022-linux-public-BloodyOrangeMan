@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-PARSED_ARGUMENTS=$(getopt -a -n weblog -o viuscg:f:hp --long file:,visit,ip,url,statuscode,code400,given:,file:,help,percentage -- "$@")
+PARSED_ARGUMENTS=$(getopt -a -n weblog -o viucg:f:hp --long file:,visit,ip,url,code400,given:,file:,help,percentage -- "$@")
 
 eval set -- "$PARSED_ARGUMENTS"
 
@@ -12,7 +12,6 @@ Usage: imgprocessing [options] <parameter>
 -v | --visit                                  Statistics on the TOP 100 hosts visited and the total number of appearances corresponding to each
 -i | --ip                                     Statistics on the TOP 100 IPs of the source host and the total number of appearances respectively                          
 -u | --url                                    Statistics on the most frequently visited URLs TOP 100
--s | --statuscode                             Count the number of occurrences of different response status codes and the corresponding percentage
 -c | --code400                                Counting the TOP 10 URLs for different 4XX status codes and the total number of occurrences respectively
 -p | --percentage                             Count the number of occurrences of different response status codes and the corresponding percentage
 -g | --given          <url>                   Given the URL output TOP 100 access source hosts
@@ -108,11 +107,8 @@ do
     -u | --url)
         counturl "$filepath"
         shift  ;;
-    -s | --status)
-        codetophost "$filepath"
-        shift  ;;
     -c | --code400)
-        findage "$filepath"
+        codetophost "$filepath"
         shift  ;;
     -p | --percentage)
         codepercentage "$filepath"
