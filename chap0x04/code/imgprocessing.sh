@@ -17,7 +17,7 @@ eval set -- "$PARSED_ARGUMENTS"
 
 usage(){
   cat <<EOF
-Usage: imgprocessing [options] <parament>
+Usage: imgprocessing [options] <parameter>
 
 -h | --help                                  This is some help text.
 -f | --file      <file path>                 Input the path or directory where the image is located
