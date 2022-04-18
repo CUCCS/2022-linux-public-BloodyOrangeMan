@@ -51,7 +51,6 @@ jpegquality(){
       convert -quality "$1"% "$img" "$filename"-quality-output.jpg
     else
       echo "$img is invalid format file"
-    continue
     fi
   done
 }
@@ -65,7 +64,6 @@ compression(){
       convert -resize "$1"x"$1" "$img" "$filename"-compression-output."$fileformat"
     else
       echo "$img is invalid format file"
-    continue
     fi
   done
 }
@@ -79,7 +77,6 @@ watermark(){
       convert -fill red -pointsize 24 -draw "text 30,30 '$1' "  "$img"  "$filename"-watermark."$fileformat"
     else
       echo "$img is invalid format file"
-    continue
     fi
   done
 }
@@ -93,7 +90,6 @@ rename(){
       mv "$img" "$(/bin/date +%Y-%m-%d)$filename.$fileformat"
     else
       echo "$img is invalid format file"
-    continue
     fi
   done  
 }
@@ -109,7 +105,6 @@ conversion(){
       convert "$img"  -background gray  -flatten  "$filename".jpg  
     else
       echo "$img is invalid format file"
-    continue
     fi
   done  
 }
