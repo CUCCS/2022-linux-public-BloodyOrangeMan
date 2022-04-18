@@ -1,4 +1,11 @@
-# 任务一：用bash编写一个图片批处理脚本，实现以下功能：
+# 1. 实验环境
+
+- **Ubuntu 20.04.4 LTS (Focal Fossa)**
+- **VirtualBox 6.1.28**
+
+
+
+# 2. 任务一：用bash编写一个图片批处理脚本，实现以下功能：
 
 - [x] 支持命令行参数方式使用不同功能
 
@@ -27,7 +34,7 @@
 
 
 
-# 任务二：用bash编写一个文本批处理脚本，对以下附件分别进行批量处理完成相应的数据统计任务
+# 3. 任务二：用bash编写一个文本批处理脚本，对以下附件分别进行批量处理完成相应的数据统计任务
 
 - [x] 统计不同年龄区间范围（20岁以下、[20-30]、30岁以上）的球员**数量**、**百分比**
 - [x] 统计不同场上位置的球员**数量**、**百分比**
@@ -62,4 +69,20 @@
 | ![](./img/percentage.png) | 统计不同响应状态码的出现次数和对应百分比                |
 | ![](./img/code4xx.png)    | 分别统计不同4XX状态码对应的TOP 10 URL和对应出现的总次数 |
 | ![](./img/given-url.png)  | 给定URL输出TOP 100访问来源主机                          |
+
+
+
+# 4. 实验问题
+
+- 最初使用getopts处理参数，但在编写代码过程中发现getopts无法处理长参数，因此就改用getopt
+- 寻找名字最长球员时忽略了长度相等的可能，随后修改代码
+- 并没有做到任意匹配4XX，只是列举了tsv中4XX出现的几种case，代码仍然有改进空间
+
+
+
+# 5. 参考资料
+
+- [Getopt - Shell Scripting Tips](https://www.shellscript.sh/tips/getopt/index.html)
+- [Linux 命令行与 Shell 脚本教程(WIP) - ShellTutorial - Arch Linux Studio](https://archlinuxstudio.github.io/ShellTutorial/#/?id=linux-命令行与-shell-脚本教程wip-shelltutorial-arch-linux-studio)
+- [*How to Add Column with Percentage* - Stack Overflow](https://stackoverflow.com/questions/8303367/how-to-add-column-with-percentage)
 
