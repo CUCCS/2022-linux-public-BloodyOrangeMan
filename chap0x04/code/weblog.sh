@@ -54,7 +54,7 @@ awk --re-interval -F '\t' '  NR>1{
         if($6==404){
             print($0)
         }
-    }'  "$1" | awk -F '\t' '{print $1}' | sort | uniq -c | sort -nr | head -n 10
+    }'  "$1" | awk -F '\t' '{print $5}' | sort | uniq -c | sort -nr | head -n 10
 
 echo ---------
 
@@ -64,7 +64,7 @@ awk --re-interval -F '\t' '  NR>1{
         if($6==403){
             print($0)
         }
-    }'  "$1" | awk -F '\t' '{print $1}' | sort | uniq -c | sort -nr | head -n 10
+    }'  "$1" | awk -F '\t' '{print $5}' | sort | uniq -c | sort -nr | head -n 10
     exit 0
 }
 
