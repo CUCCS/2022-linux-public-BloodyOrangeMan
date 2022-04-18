@@ -15,11 +15,18 @@ PARSED_ARGUMENTS=$(getopt -a -n imgprocessing -o f:q:hc:w:rC --long file:,qualit
 
 eval set -- "$PARSED_ARGUMENTS"
 
-usage()
-{
-  echo "Usage: alphabet [ -a | --alpha ] [ -b | --beta ]
-                        [ -c | --charlie CHARLIE ] 
-                        [ -d | --delta   DELTA   ] filename(s)"
+usage(){
+  cat <<EOF
+Usage: imgprocessing [options] <parament>
+
+-h | --help                                  This is some help text.
+-f | --file      <file path>                 Input the path or directory where the image is located
+-q | --quality   <quality size>              Quality compression of jpeg files
+-c | --compress  <compress size>             Compress the resolution of jpeg/png/svg format images while maintaining the original aspect ratio
+-w | --watermark <your watermark text>       Add custom text watermarks to images in bulk
+-r | --rename                                Batch renaming
+-C | --conversion                            Convert png/svg images to jpg format
+EOF
   exit 2
 }
 
