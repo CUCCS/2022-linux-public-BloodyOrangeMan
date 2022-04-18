@@ -9,12 +9,12 @@ usage(){
 Usage: imgprocessing [options] <parameter>
 
 -h | --help                                  This is some help text.
--f | --file      <file path>                 Input the path or directory where the image is located
--q | --quality   <quality size>              Quality compression of jpeg files
--c | --compress  <compress size>             Compress the resolution of jpeg/png/svg format images while maintaining the original aspect ratio
--w | --watermark <your watermark text>       Add custom text watermarks to images in bulk
--r | --rename                                Batch renaming
--C | --conversion                            Convert png/svg images to jpg format
+-f | --file      <file path>                 Input the path or directory where the tsv is located
+-a | --age                                   Statistics on the number and percentage of players in different age ranges (under 20, [20-30], over 30)
+-p | --position                              Statistics on the number and percentage of players in different positions on the field
+-n | --name                                  Statistics of the player with the longest name and the player with the shortest name
+-A | --findage                               Statistic of the oldest player and the youngest player
+
 EOF
   exit 2
 }
