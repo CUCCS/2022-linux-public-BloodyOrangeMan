@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-PARSED_ARGUMENTS=$(getopt -a -n worldcup -o ahf:pn:A --long file:,age,help,file,position,name:findage -- "$@")
+PARSED_ARGUMENTS=$(getopt -a -n worldcup -o ahf:pnA --long file:,age,help,file,position,name,findage -- "$@")
 
 eval set -- "$PARSED_ARGUMENTS"
 
@@ -118,7 +118,7 @@ findname(){
     exit 0
 }
 
-findage(){
+findages(){
  
         awk -F '\t' 'BEGIN{ max=0; min=1000; }
     NR>1 { 
@@ -159,10 +159,10 @@ do
         countposition "$filepath"
         shift ;; 
     -n | --name)
-        countname "$filepath"
+        findname "$filepath"
         shift  ;;
     -A | --findage)
-        findage "$filepath"
+        findages "$filepath"
         shift  ;;
     *) echo "Unexpected option: $1 - this should not happen."
     usage ;;
