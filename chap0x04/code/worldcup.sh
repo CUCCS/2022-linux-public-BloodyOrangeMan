@@ -70,9 +70,9 @@ echo "
 |                                                                                
 |--------------------------------------------------------------------------------|
 |                                                                                
-|    The percentage of players younger than 20 years old is $percentage1%        
-|    The percentage of players between the ages of 20 and 30 is $percentage2%    
-|    The percentage of players over 30 years old is $percentage3%                
+|    The percentage of players younger than 20 years old is $percentage1        
+|    The percentage of players between the ages of 20 and 30 is $percentage2
+|    The percentage of players over 30 years old is $percentage3              
 |                                                                                
 |--------------------------------------------------------------------------------|
 "
