@@ -17,7 +17,7 @@ Usage: imgprocessing [options] <parameter>
 -g | --given          <url>                   Given the URL output TOP 100 access source hosts
 
 EOF
-  exit 2
+  exit 0
 }
 
 countvisits(){

@@ -27,7 +27,7 @@ Usage: imgprocessing [options] <parameter>
 -r | --rename                                Batch renaming
 -C | --conversion                            Convert png/svg images to jpg format
 EOF
-  exit 2
+  exit 0
 }
 
 

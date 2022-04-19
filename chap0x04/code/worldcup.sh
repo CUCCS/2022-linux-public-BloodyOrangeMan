@@ -16,7 +16,7 @@ Usage: imgprocessing [options] <parameter>
 -A | --findage                               Statistic of the oldest player and the youngest player
 
 EOF
-  exit 2
+  exit 0
 }
 
 filecheck(){
