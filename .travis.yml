@@ -21,8 +21,6 @@ script:
   - bash imgprocessing.sh -f linux.jpg -c 90
   - bash imgprocessing.sh -f linux.jpg -w lsj
   - bash imgprocessing.sh -f linux.jpg -r
-  - bash imgprocessing.sh -f linuxpng.png -C
-  - bash imgprocessing.sh -f linux.svg -C
   - echo "=============================="
   - bash worldcup.sh -h
   - bash worldcup.sh -f worldcupplayerinfo.tsv -a
