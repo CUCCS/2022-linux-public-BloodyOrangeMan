@@ -1,0 +1,45 @@
+language: bash
+before_install:
+  - sudo apt-get update
+  - sudo apt-get install -y shellcheck
+  - sudo apt-get install imagemagick
+  - sudo apt-get install p7zip-full
+script:
+  - cd ./chap0x04/code/
+  - wget "https://c4pr1c3.gitee.io/linuxsysadmin/exp/chap0x04/worldcupplayerinfo.tsv"
+  - wget "https://c4pr1c3.gitee.io/linuxsysadmin/exp/chap0x04/web_log.tsv.7z"
+  - wget "https://forum.endeavouros.com/uploads/default/original/3X/7/1/71771bc2d97763ac5f9ebdb0eb8ad3bd3e1d0f3d.png"
+  - wget "https://www.svgrepo.com/show/7095/linux.svg"
+  - wget "https://upload.wikimedia.org/wikipedia/commons/d/dd/Linux_logo.jpg"
+  - mv 71771bc2d97763ac5f9ebdb0eb8ad3bd3e1d0f3d.png linuxpng.png
+  - mv Linux_logo.jpg linux.jpg
+  - 7z x -ot web_log.tsv.7z
+  - mv t/web_log.tsv web_log.tsv
+  - ls -l
+  - bash imgprocessing.sh -h
+  - bash imgprocessing.sh -f linux.jpg -q 50
+  - bash imgprocessing.sh -f linux.jpg -c 90
+  - bash imgprocessing.sh -f linux.jpg -w lsj
+  - bash imgprocessing.sh -f linux.jpg -r
+  - bash imgprocessing.sh -f linuxpng.png -C
+  - bash imgprocessing.sh -f linux.svg -C
+  - echo "=============================="
+  - bash worldcup.sh -h
+  - bash worldcup.sh -f worldcupplayerinfo.tsv -a
+  - bash worldcup.sh -f worldcupplayerinfo.tsv -p
+  - bash worldcup.sh -f worldcupplayerinfo.tsv -n
+  - bash worldcup.sh -f worldcupplayerinfo.tsv -A
+  - echo "=============================="
+  - bash weblog.sh -h
+  - bash weblog.sh -f web_log.tsv -v
+  - bash weblog.sh -f web_log.tsv -i
+  - bash weblog.sh -f web_log.tsv -u
+  - bash weblog.sh -f web_log.tsv -c
+  - bash weblog.sh -f web_log.tsv -p
+  - bash weblog.sh -f web_log.tsv -g /whats-new.html
+  - shellcheck imgprocessing.sh.sh
+  - shellcheck worldcup.sh.sh
+  - shellcheck weblog.sh.sh
+notifications:
+  email:
+    on_success: never
