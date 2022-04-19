@@ -55,8 +55,7 @@ over30=$(awk  '
         printf cnt
     }
     ' "$filepath")
-
-total=$(("$under20"+"$middle"+"$over30"))
+total=$(echo "$under20 + $middle + $over30 " | bc)
 percentage1=$(echo "scale=3; $under20 / $total * 100" | bc)
 percentage2=$(echo "scale=3; $middle / $total * 100" | bc)
 percentage3=$(echo "scale=3; $over30 / $total * 100" | bc)
