@@ -7,7 +7,7 @@ before_install:
 script:
   - cd ./chap0x04/code/
   - wget "https://c4pr1c3.gitee.io/linuxsysadmin/exp/chap0x04/worldcupplayerinfo.tsv"
-  - wget "https://c4pr1c3.gitee.io/linuxsysadmin/exp/chap0x04/web_log.tsv.7z"
+  - wget "https://c4pr1c3.github.io/LinuxSysAdmin/exp/chap0x04/web_log.tsv.7z"
   - wget "https://forum.endeavouros.com/uploads/default/original/3X/7/1/71771bc2d97763ac5f9ebdb0eb8ad3bd3e1d0f3d.png"
   - wget "https://www.svgrepo.com/show/7095/linux.svg"
   - wget "https://upload.wikimedia.org/wikipedia/commons/d/dd/Linux_logo.jpg"
