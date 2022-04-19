@@ -85,7 +85,7 @@ countposition(){
     awk -F '\t' 'BEGIN{sum=0;}
     NR > 1 {pos[$5]++; sum++;}
     END{
-        for (p in pos){printf("%s:\t%d\t%.3f\%\n",p,pos[p],pos[p]/sum*100);}
+        for (p in pos){printf("%s:\t%d\t%.3f\n",p,pos[p],pos[p]/sum*100);}
     }' "$1"
 
 
