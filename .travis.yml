@@ -37,9 +37,9 @@ script:
   - bash weblog.sh -f web_log.tsv -c
   - bash weblog.sh -f web_log.tsv -p
   - bash weblog.sh -f web_log.tsv -g /whats-new.html
-  - shellcheck imgprocessing.sh.sh
-  - shellcheck worldcup.sh.sh
-  - shellcheck weblog.sh.sh
+  - shellcheck imgprocessing.sh
+  - shellcheck worldcup.sh
+  - shellcheck weblog.sh
 notifications:
   email:
     on_success: never
