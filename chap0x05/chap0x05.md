@@ -1,4 +1,4 @@
-## 1. 实验环境
+## 1 实验环境
 
 - Windows 11
 - VirtualBox6.1.34
@@ -10,7 +10,7 @@
 
 
 
-## 2. 安装并配置本次实验环境
+## 2 安装并配置本次实验环境
 
 #### 2.1 安装并配置VeryNginx
 
@@ -302,11 +302,65 @@ $_DVWA["SQLI_DB"] = MYSQL;
 
 ![](./img/network-diagram.png)
 
+## 3 安全加固要求
 
+#### 3.1 使用IP地址方式均无法访问上述任意站点，并向访客展示自定义的友好错误提示信息页面-1
+
+| ![](./img/host-only-mathcer.png) | 添加匹配规则           |
+| -------------------------------- | ---------------------- |
+| ![](./img/hostonly-filter.png)   | 添加过滤器             |
+| ![](./img/host-only-warning.png) | 友好错误提示信息页面-1 |
+
+#### 3.2 Damn Vulnerable Web Application (DVWA)只允许白名单上的访客来源IP，其他来源的IP访问均向访客展示自定义的**友好错误提示信息页面-2**
+
+配置类似上面过程，展示配置结果
+
+| Kali(192.168.56.104)                | Windows(192.168.56.1)      |
+| ----------------------------------- | -------------------------- |
+| ![](./img/no-access-permission.png) | ![](./img/dvwa-access.png) |
+
+#### 3.3 在不升级WordPress版本的情况下，通过定制VeryNginx的访问控制策略规则，**热**修复WordPress < 4.7.1 - Username Enumeration
+
+在Kali中运行脚本得到如下json串：
 
 ```json
 [{"id":1,"name":"lsj","url":"","description":"","link":"http:\/\/192.168.56.104:8080\/author\/lsg\/","slug":"lsj","avatar_urls":{"24":"http:\/\/1.gravatar.com\/avatar\/d05c9acf0c799bfd826160e21d02584b?s=24&d=mm&r=g","48":"http:\/\/1.gravatar.com\/avatar\/d05c9acf0c799bfd826160e21d02584b?s=48&d=mm&r=g","96":"http:\/\/1.gravatar.com\/avatar\/d05c9acf0c799bfd826160e21d02584b?s=96&d=mm&r=g"},"meta":[],"_links":{"self":[{"href":"http:\/\/192.168.56.104:8080\/wp-json\/wp\/v2\/users\/1"}],"collection":[{"href":"http:\/\/192.168.56.104:8080\/wp-json\/wp\/v2\
 ```
+
+| ![](./img/poc-matcher.png) | 添加匹配规则   |
+| -------------------------- | -------------- |
+| ![](./img/poc-filter.png)  | 添加过滤器     |
+| ![](./img/hot-fix.png)     | 不再得到json串 |
+
+#### 3.4 通过配置VeryNginx的Filter规则实现对Damn Vulnerable Web Application (DVWA)的SQL注入实验在低安全等级条件下进行防护
+
+| 添加匹配规则与过滤器： | ![](./img/sqli-matcher.png) | ![](./img/sqli-filter.png) |
+| ---------------------- | --------------------------- | -------------------------- |
+| 添加前后               | ![](./img/sqli.png)         | ![](./img/ban-sqli.png)    |
+
+
+
+## 4 VeryNginx配置要求
+
+####  4.1 VeryNginx的Web管理页面仅允许白名单上的访客来源IP，其他来源的IP访问均向访客展示自定义的**友好错误提示信息页面-3**
+
+与上面DVWA白名单类似，展示结果：
+
+| Kali(192.168.56.104)           | Windows(192.168.56.1)                                   |
+| ------------------------------ | ------------------------------------------------------- |
+| ![](./img/vn-nopermission.png) | <img src="./img/verify-nginx.png" style="zoom: 25%;" /> |
+
+#### 4.2 通过定制VeryNginx的访问控制策略规则实现
+
+- 限制DVWA站点的单IP访问速率为每秒请求数 < 50
+- 限制Wordpress站点的单IP访问速率为每秒请求数 < 20
+- 超过访问频率限制的请求直接返回自定义**错误提示信息页面-4**
+
+在VeryNginx的Frequency Limit中设置：
+
+![](./img/ab-test.png)
+
+在Kali中执行ab压测工具：
 
 ```
                                                                                                   
@@ -356,6 +410,23 @@ Percentage of the requests served within a certain time (ms)
   98%     26
   99%     73
  100%     73 (longest request)
-
 ```
+
+可以看到**Failed requests**一项为80，说明访问速率限制起效
+
+#### 4.3 禁止curl访问
+
+在日志中查询到curl访问的User Agent为：
+
+![](./img/curl-access.png)
+
+添加curl匹配规则：
+
+![](./img/curl-filter.png)
+
+再添加过滤器后实现效果：
+
+![](./img/check-curl.png)
+
+## 5 实验问题
 
