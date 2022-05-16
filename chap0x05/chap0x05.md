@@ -75,8 +75,6 @@ http {
 
 ![](/img/verify-nginx.png)
 
-
-
 #### 2.2 安装Nginx与Wordpress
 
 ##### 2.2.1 安装依赖
@@ -429,4 +427,42 @@ Percentage of the requests served within a certain time (ms)
 ![](./img/check-curl.png)
 
 ## 5 实验问题
+
+一开始我使用VeryNginx仓库中的Release包进行编译安装，出现如下报错：
+
+```c
+cc -c -pipe  -O -W -Wall -Wpointer-arith -Wno-unused -Werror -g -Wno-error -I src/core -I src/event -I src/event/modules -I src/os/unix -I objs \
+    -o objs/src/os/unix/ngx_posix_init.o \
+    src/os/unix/ngx_posix_init.c
+cc -c -pipe  -O -W -Wall -Wpointer-arith -Wno-unused -Werror -g -Wno-error -I src/core -I src/event -I src/event/modules -I src/os/unix -I objs \
+    -o objs/src/os/unix/ngx_user.o \
+    src/os/unix/ngx_user.c
+src/os/unix/ngx_user.c: In function ‘ngx_libc_crypt’:
+src/os/unix/ngx_user.c:36:7: error: ‘struct crypt_data’ has no member named ‘current_salt’
+   36 |     cd.current_salt[0] = ~salt[0];
+      |       ^
+make[1]: *** [objs/Makefile:749: objs/src/os/unix/ngx_user.o] Error 1
+```
+
+查询后得知，这是一个出现在较老版本的Nginx上游问题，想解决得修改文件手动编译
+
+后来发现VeryNginx仓库源码比Release新，直接git clone仓库源码即可
+
+随后检查出错源文件：
+
+![](./img/make-failed.png)
+
+发现新版本的Openresty(以及Nginx)已经将那行错误代码删掉，并且也编译正确。
+
+- 参考：[nginx won't build under libxcrypt due to missing 'current_salt' in 'crypt_data' struct](https://trac.nginx.org/nginx/ticket/1469)
+
+
+
+## 6 参考资料
+
+- [How to Install WordPress with LEMP on Ubuntu 20.04](https://www.digitalocean.com/community/tutorials/how-to-install-wordpress-with-lemp-on-ubuntu-20-04)
+- [Install WordPress with Nginx on Ubuntu 18.04](https://www.journaldev.com/25670/install-wordpress-nginx-ubuntu)
+- [ DVWA](https://github.com/digininja/DVWA)
+- [VeryNginx](https://github.com/alexazhou/VeryNginx)
+- [WordPress < 4.7.1 - Username Enumeration](https://www.exploit-db.com/exploits/41497/)
 
