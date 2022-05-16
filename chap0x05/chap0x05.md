@@ -296,7 +296,11 @@ $_DVWA["SQLI_DB"] = MYSQL;
 
 ![](./img/proxy-pass.png)
 
+#### 2.5 网络拓扑图
 
+至此，本次实验网络拓扑图为：
+
+![](./img/network-diagram.png)
 
 
 
